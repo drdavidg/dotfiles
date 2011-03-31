@@ -28,12 +28,21 @@ bash_prompt_command() {
 }
 
 # used to output the python virtualenv name
-venv() {
-	[ ${#VIRTUAL_ENV} -gt "0" ] && echo -e "${K} e[${R}$(basename ${VIRTUAL_ENV})${K}]"
-}
+#venv() {
+#[ ${#VIRTUAL_ENV} -gt "0" ] && echo -e "${K} e[${R}$(basename ${VIRTUAL_ENV})${K}]"
+#}
 
+#git stuff
 vcs(){
 	echo -e $(vcprompt --format "${K} %n[${R}%b${EMG}%m${EMR}%u${EMY}%a${K}]")
+}
+
+#get the ruby version
+rv(){
+	local ver=`rvm current`
+	local ver1=${ver#*-}
+	echo -e ${ver1%-*}
+	#echo -e ver2)
 }
 
 bash_prompt() {
@@ -52,9 +61,9 @@ bash_prompt() {
 	PS1="$TITLEBAR\n\
 \[${UC}\]\u\
 \$(vcs)\
-\$(venv)\
+ \[${EMC}\]\$(rv)
  \[${EMB}\]\${NEW_PWD} \
-\n\[${EMG}\]→\[${NONE}\] "
+ \[${EMG}\]→\[${NONE}\] "
 }
 
 PROMPT_COMMAND=bash_prompt_command
