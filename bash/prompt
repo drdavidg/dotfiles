@@ -37,12 +37,10 @@ vcs(){
 	echo -e $(vcprompt --format "${K} %n[${R}%b${EMG}%m${EMR}%u${EMY}%a${K}]")
 }
 
-#get the ruby version
 rv(){
-	local ver=`rvm current`
-	local ver1=${ver#*-}
-	echo -e ${ver1%-*}
-	#echo -e ver2)
+    local v=`rvm current`
+    local arr=(${v//-/ })
+    echo ${arr[1]}
 }
 
 bash_prompt() {
