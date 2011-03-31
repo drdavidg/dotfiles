@@ -39,6 +39,7 @@ alias tm='top -o vsize'
 # ls aliases
 alias ls='ls $LS_OPTIONS'
 alias l='ls $LS_OPTIONS -lh'
+alias ll='ls $LS_OPTIONS -lh'
 alias la='ls $LS_OPTIONS -lAh'
 
 # Ruby
