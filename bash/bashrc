@@ -1,3 +1,4 @@
+export SSH_ENV=$HOME/.ssh/environment
 export CURRENT_SHELL=`which bash`
 
 alias reload=". ~/.bashrc"
@@ -45,3 +46,5 @@ function j { new_path="$(autojump $@)";if [ -n "$new_path" ]; then echo -e "\\03
 if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
   . `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 fi
+
+export PATH=$PATH:/Volumes/Phatty/Android/android-sdk-mac_x86/platform-tools/

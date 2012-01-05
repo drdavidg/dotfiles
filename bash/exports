@@ -1,9 +1,14 @@
 if [ $system_name = 'Darwin' ]; then
   export EDITOR='mate -w'
   export PATH="/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/:$PATH"
-  export PATH="/Library/PostgreSQL8/bin/:$PATH"
+  export PATH="/Library/PostgreSQL8/bin/toolchains/arm-linux-androideabi-4.4.3/prebuilt/darwin-x86/bin:$PATH"
+  export ANDROID_NDK_ROOT="/Volumes/Phatty/Android/android-ndk-r6"
+  export ANDROID_SDK_ROOT="/Volumes/Phatty/Android/android-sdk-mac_x86"
+  export PATH=$ANDROID_NDK_ROOT\bin:$PATH
+  export PATH="/Volumes/Phatty/Android/android-ndk-r6/toolchains/arm-linux-androideabi-4.4.3/prebuilt/darwin-x86/bin:$PATH"
   export CDPATH='.:~:~/src:~/src/oss'
   export GEM_OPEN_EDITOR='mate'
+  export DOUBANGO_HOME="/Users/matt/Documents/curiousminds/imsdroid/doubango-read-only"
 else
   export EDITOR='nano -w'
 fi

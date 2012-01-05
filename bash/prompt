@@ -38,9 +38,19 @@ vcs(){
 }
 
 rv(){
-    local v=`rvm current`
-    local arr=(${v//-/ })
+    local v=`ruby -v`
+    local arr=(${v// / })
     echo ${arr[1]}
+	}
+	
+gemset() {
+	local gemgem=`rvm gemset name`
+	if [ $gemgem = "/Users/matt/.rvm/gems/ruby-1.9.2-p180" ]; then
+	 echo global
+	else
+	 echo ${gemgem}
+	fi 
+	
 }
 
 bash_prompt() {
@@ -58,8 +68,8 @@ bash_prompt() {
     
 	PS1="$TITLEBAR\n\
 \[${UC}\]\u\
-\$(vcs)\
- \[${EMC}\]\$(rv)
+ \[${EMC}\]\$(rv)\
+ \[${EMG}\]\$(gemset)
  \[${EMB}\]\${NEW_PWD} \
  \[${EMG}\]→\[${NONE}\] "
 }

@@ -21,8 +21,12 @@ if [ $system_name = 'Darwin' ]; then
   alias ls='ls -G'
   alias pubkey='pubkey | pbcopy && echo "Keys copied to clipboard"'
   alias et="m"
+  alias doc='cd ~/Documents'
+  alias cur='cd ~/Documents/curiousminds'
+  alias redis='redis-server > redis.log &'
   alias o='open .'
   alias b='open -a chrome'
+  alias trip='tripwire /'
   alias eprof="mate ~/.config"
   alias hidefile='/usr/bin/SetFile -a "V"'
   alias showfile='/usr/bin/SetFile -a "v"'
@@ -46,6 +50,8 @@ alias la='ls $LS_OPTIONS -lAh'
 alias irb='irb --readline -r irb/completion'
 alias rii='ri -Tf ansi'
 alias gemi='sudo gem install --no-rdoc --no-ri'
+alias buni='bundle install'
+alias s='bundle exec rspec'
 
 # MySQL
 alias mysql-start="sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist"
@@ -60,3 +66,13 @@ function mongo-stop() {
 	launchctl stop org.mongodb.mongod
 	launchctl unload -w ~/Library/LaunchAgents/org.mongodb.mongod.plist
 }
+
+function start_agent() {
+  echo "Initializing new SSH agent...";
+  /usr/bin/ssh-agent | sed 's/^echo/#echo/' > $SSH_ENV;
+  chmod 600 $SSH_ENV;
+  . $SSH_ENV;
+  /usr/bin/ssh-add;
+}
+export -f start_agent
+ssh-add ~/.ssh/voiceroom.pem 
