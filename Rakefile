@@ -1,5 +1,6 @@
 require 'rake'
 require 'erb'
+require 'fileutils'
 
 task :default => [:bash, :bin, :ruby, :vim]
 
@@ -21,8 +22,8 @@ end
 
 desc 'configure ~/bin'
 task :bin => :init do
-  FileUtil.mkdir $homebin unless File.exist? $homebin
-  %w[vcprompt pg beautify].each do |file|
+  FileUtils.mkdir $homebin unless File.exist? $homebin
+  %w[vcprompt].each do |file|
     relink_file File.join($dotconf, 'bin', file), File.join($homebin, file)
   end
 end
@@ -77,12 +78,13 @@ end
 
 desc 'download latest vcprompt'
 task :update_vcprompt => :init do
-  system "curl -s https://github.com/xvzf/vcprompt/raw/master/bin/vcprompt > bin/vcprompt"
+  system "curl -s https://github.com/xvzf/vcprompt/raw/master/bin/vcprompt > ~/bin/vcprompt"
   FileUtils.chmod 0755, "bin/vcprompt"
 end
 
 def link_file(source, target)
   puts "linking #{target}"
+  FileUtils.touch target
   FileUtils.ln_sf source, target
 end
 
@@ -91,7 +93,7 @@ def remove_file(file)
 end
 
 def relink_file(source, target)
-  remove_file target
+  remove_file target if File.exist?(target)
   link_file source, target
 end
 
