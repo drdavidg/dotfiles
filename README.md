@@ -1,4 +1,4 @@
-Kris' Dot Files
+Curious Minds
 ===============
 
 My unix shell and vim configuration files
@@ -6,7 +6,7 @@ My unix shell and vim configuration files
 Installation
 ------------
 
-	$ git clone git://github.com/kriswill/dotfiles ~/src/dotfiles
+	$ git clone git://github.com/curiousminds/dotfiles ~/src/curiousminds
 	$ cd ~/src/dotfiles
 	$ rake
 
@@ -18,7 +18,7 @@ This will produce the following links:
 * ~/.vimrc -> ~/.config/vim/vimrc
 * ~/.gvimrc -> ~/.config/vim/gvimrc
 
-Bourne-Again SHell
+Bourne-Again Shell
 ------------------
 
 I use the default BASH shell that comes configured on Mac OS/X 10.6.7.  The rake command will link the appropriate dot files in the home directory.

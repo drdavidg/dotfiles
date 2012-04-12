@@ -1,6 +1,5 @@
 export SSH_ENV=$HOME/.ssh/environment
 export CURRENT_SHELL=`which bash`
-
 alias reload=". ~/.bashrc"
 
 # All things that are both ZSH and Bash compatible
